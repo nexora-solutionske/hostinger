@@ -1,0 +1,12 @@
+services:
+  site:
+    image: node:22-alpine
+    working_dir: /workspace
+    network_mode: host
+    volumes:
+      - .:/workspace
+    environment:
+      PORT: 3000
+      IS_ALLOY: ${IS_ALLOY:-false}
+    command: npm run dev
+    restart: unless-stopped
